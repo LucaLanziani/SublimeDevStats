@@ -1,0 +1,64 @@
+[
+	{ "keys": ["ctrl+shift+n"], "command": "trackit", "args": { "key": "ctrl+shift+n", "command": "new_window" }},
+	{ "keys": ["ctrl+shift+w"], "command": "trackit", "args": { "key": "ctrl+shift+w", "command": "close_window" }},
+	{ "keys": ["ctrl+o"], "command": "trackit", "args": { "key": "ctrl+o", "command": "prompt_open_file" }},
+	{ "keys": ["ctrl+shift+t"], "command": "trackit", "args": { "key": "ctrl+shift+t", "command": "reopen_last_file" }},
+	{ "keys": ["alt+o"], "command": "trackit", "args": { "key": "alt+o", "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "h", "ipp", "inl", "m", "mm"]} }},
+	{ "keys": ["ctrl+n"], "command": "trackit", "args": { "key": "ctrl+n", "command": "new_file" }},
+	{ "keys": ["ctrl+s"], "command": "trackit", "args": { "key": "ctrl+s", "command": "save" }},
+	{ "keys": ["ctrl+shift+s"], "command": "trackit", "args": { "key": "ctrl+shift+s", "command": "prompt_save_as" }},
+	{ "keys": ["ctrl+f4"], "command": "trackit", "args": { "key": "ctrl+f4", "command": "close_file" }},
+	{ "keys": ["ctrl+w"], "command": "trackit", "args": { "key": "ctrl+w", "command": "close" }},
+
+
+	{ "keys": ["backspace"], "command": "trackit", "args": { "key": "backspace", "command": "left_delete" }},
+	{ "keys": ["shift+backspace"], "command": "trackit", "args": { "key": "shift+backspace", "command": "left_delete" }},
+	{ "keys": ["ctrl+shift+backspace"], "command": "trackit", "args": { "key": "ctrl+shift+backspace", "command": "left_delete" }},
+	{ "keys": ["delete"], "command": "trackit", "args": { "key": "delete", "command": "right_delete" }},
+	{ "keys": ["enter"], "command": "trackit", "args": { "key": "enter", "command": "insert", "args": {"characters": "\n"} }},
+	{ "keys": ["shift+enter"], "command": "trackit", "args": { "key": "shift+enter", "command": "insert", "args": {"characters": "\n"} }},
+
+	{ "keys": ["ctrl+shift+v"], "command": "trackit", "args": { "key": "ctrl+shift+v", "command": "paste_and_indent" }},
+	{ "keys": ["shift+delete"], "command": "trackit", "args": { "key": "shift+delete", "command": "cut" }},
+	{ "keys": ["ctrl+insert"], "command": "trackit", "args": { "key": "ctrl+insert", "command": "copy" }},
+	{ "keys": ["shift+insert"], "command": "trackit", "args": { "key": "shift+insert", "command": "paste" }},
+	{ "keys": ["ctrl+x"], "command": "trackit", "args": { "key": "ctrl+x", "command": "cut" }},
+	{ "keys": ["ctrl+c"], "command": "trackit", "args": { "key": "ctrl+c", "command": "copy" }},
+	{ "keys": ["ctrl+v"], "command": "trackit", "args": { "key": "ctrl+v", "command": "paste" }},
+
+	{ "keys": ["left"], "command": "trackit", "args": { "key": "left", "command": "move", "args": {"by": "characters", "forward": false} }},
+	{ "keys": ["right"], "command": "trackit", "args": { "key": "right", "command": "move", "args": {"by": "characters", "forward": true} }},
+	{ "keys": ["up"], "command": "trackit", "args": { "key": "up", "command": "move", "args": {"by": "lines", "forward": false} }},
+	{ "keys": ["down"], "command": "trackit", "args": { "key": "down", "command": "move", "args": {"by": "lines", "forward": true} }},
+	{ "keys": ["shift+left"], "command": "trackit", "args": { "key": "shift+left", "command": "move", "args": {"by": "characters", "forward": false, "extend": true} }},
+	{ "keys": ["shift+right"], "command": "trackit", "args": { "key": "shift+right", "command": "move", "args": {"by": "characters", "forward": true, "extend": true} }},
+	{ "keys": ["shift+up"], "command": "trackit", "args": { "key": "shift+up", "command": "move", "args": {"by": "lines", "forward": false, "extend": true} }},
+	{ "keys": ["shift+down"], "command": "trackit", "args": { "key": "shift+down", "command": "move", "args": {"by": "lines", "forward": true, "extend": true} }},
+
+	{ "keys": ["ctrl+left"], "command": "trackit", "args": { "key": "ctrl+left", "command": "move", "args": {"by": "words", "forward": false} }},
+	{ "keys": ["ctrl+right"], "command": "trackit", "args": { "key": "ctrl+right", "command": "move", "args": {"by": "word_ends", "forward": true} }},
+	{ "keys": ["ctrl+shift+left"], "command": "trackit", "args": { "key": "ctrl+shift+left", "command": "move", "args": {"by": "words", "forward": false, "extend": true} }},
+	{ "keys": ["ctrl+shift+right"], "command": "trackit", "args": { "key": "ctrl+shift+right", "command": "move", "args": {"by": "word_ends", "forward": true, "extend": true} }},
+
+	{ "keys": ["alt+left"], "command": "trackit", "args": { "key": "alt+left", "command": "move", "args": {"by": "subwords", "forward": false} }},
+	{ "keys": ["alt+right"], "command": "trackit", "args": { "key": "alt+right", "command": "move", "args": {"by": "subword_ends", "forward": true} }},
+	{ "keys": ["alt+shift+left"], "command": "trackit", "args": { "key": "alt+shift+left", "command": "move", "args": {"by": "subwords", "forward": false, "extend": true} }},
+	{ "keys": ["alt+shift+right"], "command": "trackit", "args": { "key": "alt+shift+right", "command": "move", "args": {"by": "subword_ends", "forward": true, "extend": true} }},
+
+	{ "keys": ["ctrl+alt+up"], "command": "trackit", "args": { "key": "ctrl+alt+up", "command": "select_lines", "args": {"forward": false} }},
+	{ "keys": ["ctrl+alt+down"], "command": "trackit", "args": { "key": "ctrl+alt+down", "command": "select_lines", "args": {"forward": true} }},
+
+	{ "keys": ["pageup"], "command": "trackit", "args": { "key": "pageup", "command": "move", "args": {"by": "pages", "forward": false} }},
+	{ "keys": ["pagedown"], "command": "trackit", "args": { "key": "pagedown", "command": "move", "args": {"by": "pages", "forward": true} }},
+	{ "keys": ["shift+pageup"], "command": "trackit", "args": { "key": "shift+pageup", "command": "move", "args": {"by": "pages", "forward": false, "extend": true} }},
+	{ "keys": ["shift+pagedown"], "command": "trackit", "args": { "key": "shift+pagedown", "command": "move", "args": {"by": "pages", "forward": true, "extend": true} }},
+
+	{ "keys": ["home"], "command": "trackit", "args": { "key": "home", "command": "move_to", "args": {"to": "bol", "extend": false} }},
+	{ "keys": ["end"], "command": "trackit", "args": { "key": "end", "command": "move_to", "args": {"to": "eol", "extend": false} }},
+	{ "keys": ["shift+home"], "command": "trackit", "args": { "key": "shift+home", "command": "move_to", "args": {"to": "bol", "extend": true} }},
+	{ "keys": ["shift+end"], "command": "trackit", "args": { "key": "shift+end", "command": "move_to", "args": {"to": "eol", "extend": true} }},
+	{ "keys": ["ctrl+home"], "command": "trackit", "args": { "key": "ctrl+home", "command": "move_to", "args": {"to": "bof", "extend": false} }},
+	{ "keys": ["ctrl+end"], "command": "trackit", "args": { "key": "ctrl+end", "command": "move_to", "args": {"to": "eof", "extend": false} }},
+	{ "keys": ["ctrl+shift+home"], "command": "trackit", "args": { "key": "ctrl+shift+home", "command": "move_to", "args": {"to": "bof", "extend": true} }},
+	{ "keys": ["ctrl+shift+end"], "command": "trackit", "args": { "key": "ctrl+shift+end", "command": "move_to", "args": {"to": "eof", "extend": true} }}
+]
