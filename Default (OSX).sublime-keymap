@@ -13,6 +13,4 @@
 	{ "keys": ["super+c"], "command": "trackit", "args": { "key": "super+c", "command": "copy" }},
 	{ "keys": ["super+v"], "command": "trackit", "args": { "key": "super+v", "command": "paste" }},
 	{ "keys": ["super+shift+v"], "command": "trackit", "args": { "key": "super+shift+v", "command": "paste_and_indent" }}
-
-
 ]

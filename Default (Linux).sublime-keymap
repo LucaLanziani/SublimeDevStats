@@ -80,6 +80,6 @@
 	{ "keys": ["ctrl+shift+tab"], "command": "trackit", "args": { "key": "ctrl+shift+tab", "command": "prev_view_in_stack"}},
 
 	{ "keys": ["ctrl+a"], "command": "trackit", "args": { "key": "ctrl+a", "command": "select_all"}},
-	{ "keys": ["ctrl+shift+l"], "command": "trackit", "args": { "key": "ctrl+shift+l", "command": "split_selection_into_lines"}},
+	{ "keys": ["ctrl+shift+l"], "command": "trackit", "args": { "key": "ctrl+shift+l", "command": "split_selection_into_lines"}}
 
 ]
