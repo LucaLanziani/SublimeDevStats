@@ -1,24 +1,18 @@
-/*
-On OS X, basic text manipulations (left, right, command+left, etc) make use of the system key bindings,
-and don't need to be repeated here. Anything listed here will take precedence, however.
-*/
 [
-	{ "keys": ["super+shift+n"], "command": "new_window" },
-	{ "keys": ["super+shift+w"], "command": "close_window" },
-	{ "keys": ["super+o"], "command": "prompt_open" },
-	{ "keys": ["super+shift+t"], "command": "reopen_last_file" },
-	{ "keys": ["super+alt+up"], "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "h", "ipp", "inl", "m", "mm"]} },
-	{ "keys": ["super+n"], "command": "new_file" },
-	{ "keys": ["super+s"], "command": "save" },
-	{ "keys": ["super+shift+s"], "command": "prompt_save_as" },
-	{ "keys": ["super+alt+s"], "command": "save_all" },
-	{ "keys": ["super+w"], "command": "close" },
-
-
-	{ "keys": ["super+x"], "command": "cut" },
-	{ "keys": ["super+c"], "command": "copy" },
-	{ "keys": ["super+v"], "command": "paste" },
-	{ "keys": ["super+shift+v"], "command": "paste_and_indent" },
+	{ "keys": ["super+shift+n"], "command": "trackit", "args": { "key": "super+shift+n", "command": "new_window" }},
+	{ "keys": ["super+shift+w"], "command": "trackit", "args": { "key": "super+shift+w", "command": "close_window" }},
+	{ "keys": ["super+o"], "command": "trackit", "args": { "key": "super+o", "command": "prompt_open" }},
+	{ "keys": ["super+shift+t"], "command": "trackit", "args": { "key": "super+shift+t", "command": "reopen_last_file" }},
+	{ "keys": ["super+alt+up"], "command": "trackit", "args": { "key": "super+alt+up", "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "h", "ipp", "inl", "m", "mm"]} }},
+	{ "keys": ["super+n"], "command": "trackit", "args": { "key": "super+n", "command": "new_file" }},
+	{ "keys": ["super+s"], "command": "trackit", "args": { "key": "super+s", "command": "save" }},
+	{ "keys": ["super+shift+s"], "command": "trackit", "args": { "key": "super+shift+s", "command": "prompt_save_as" }},
+	{ "keys": ["super+alt+s"], "command": "trackit", "args": { "key": "super+alt+s", "command": "save_all" }},
+	{ "keys": ["super+w"], "command": "trackit", "args": { "key": "super+w", "command": "close" }},
+	{ "keys": ["super+x"], "command": "trackit", "args": { "key": "super+x", "command": "cut" }},
+	{ "keys": ["super+c"], "command": "trackit", "args": { "key": "super+c", "command": "copy" }},
+	{ "keys": ["super+v"], "command": "trackit", "args": { "key": "super+v", "command": "paste" }},
+	{ "keys": ["super+shift+v"], "command": "trackit", "args": { "key": "super+shift+v", "command": "paste_and_indent" }}
 
 
 ]
