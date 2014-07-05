@@ -15,7 +15,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/SublimeDevStas/Trackit.sublime-settings"
+                                    "file": "${packages}/SublimeDevStats/Trackit.sublime-settings"
                                 },
                                 "caption": "Settings – Default"
                             },
