@@ -2,13 +2,14 @@ import sublime
 import sublime_plugin
 import urllib2
 import json
+import time
 
 SETTINGS_FILE = 'Trackit.sublime-settings'
 
 
-def send_data(key, url):
+def send_data(filename, key, url):
     try:
-        data = json.dumps({"key": key})
+        data = json.dumps({"timestamp": time.time(), "filepath": filename, "key": key})
         clen = len(data)
         req = urllib2.Request(url, data, {'Content-Type': 'application/json', 'Content-Length': clen})
         f = urllib2.urlopen(req, timeout=0.01)
@@ -23,7 +24,8 @@ class TrackitCommand(sublime_plugin.TextCommand):
         settings = sublime.load_settings(SETTINGS_FILE)
         endpoint = settings.get('endpoint')
         on_keypress = settings.get('on_keypress')
-        send_data(key, endpoint + on_keypress)
+        filename = self.view.file_name()
+        send_data(filename, key, endpoint + on_keypress)
         if command is not None:
             self.view.run_command(command, args)
         else:
