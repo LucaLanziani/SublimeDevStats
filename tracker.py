@@ -14,7 +14,7 @@ def send_data(key, url):
         f = urllib2.urlopen(req, timeout=0.01)
         print f.read()
     except Exception as e:
-        print e
+        print "%s while contacting %s" % (e, url)
 
 
 class TrackitCommand(sublime_plugin.TextCommand):
