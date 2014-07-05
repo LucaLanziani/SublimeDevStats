@@ -12,12 +12,6 @@
 	{ "keys": ["keypad_enter"], "command": "trackit", "args": { "key": "keypad_enter", "command": "insert", "args": {"characters": "\n"}}},
 	{ "keys": ["shift+keypad_enter"], "command": "insert", "args": {"characters": "\n"}},
 
-	{ "keys": ["ctrl+z"], "command": "trackit", "args": { "key": "ctrl+z", "command": "undo" }},
-	{ "keys": ["ctrl+shift+z"], "command": "trackit", "args": { "key": "ctrl+shift+z", "command": "redo" }},
-	{ "keys": ["ctrl+y"], "command": "trackit", "args": { "key": "ctrl+y", "command": "redo_or_repeat" }},
-	{ "keys": ["ctrl+u"], "command": "trackit", "args": { "key": "ctrl+u", "command": "soft_undo" }},
-	{ "keys": ["ctrl+shift+u"], "command": "trackit", "args": { "key": "ctrl+shift+u", "command": "soft_redo" }},
-
 	{ "keys": ["shift+delete"], "command": "trackit", "args": { "key": "shif+delete", "command": "cut" }},
 	{ "keys": ["ctrl+insert"], "command": "trackit", "args": { "key": "ctrl+insert", "command": "copy" }},
 	{ "keys": ["shift+insert"], "command": "trackit", "args": { "key": "shift+insert", "command": "paste" }},

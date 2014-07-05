@@ -12,5 +12,8 @@
 	{ "keys": ["super+x"], "command": "trackit", "args": { "key": "super+x", "command": "cut" }},
 	{ "keys": ["super+c"], "command": "trackit", "args": { "key": "super+c", "command": "copy" }},
 	{ "keys": ["super+v"], "command": "trackit", "args": { "key": "super+v", "command": "paste" }},
-	{ "keys": ["super+shift+v"], "command": "trackit", "args": { "key": "super+shift+v", "command": "paste_and_indent" }}
+	{ "keys": ["super+shift+v"], "command": "trackit", "args": { "key": "super+shift+v", "command": "paste_and_indent" }},
+	{ "keys": ["backspace"], "command": "trackit", "args": {"key":"backspace", "command": "left_delete" }},
+	{ "keys": ["delete"], "command": "trackit", "args": { "key": "delete", "command": "right_delete" }},
+	{ "keys": ["enter"], "command": "trackit", "args": { "key": "enter", "command": "insert", "args": {"characters": "\n"}}}
 ]
