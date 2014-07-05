@@ -3,10 +3,11 @@ import sublime_plugin
 import urllib2
 import json
 
+SETTINGS_FILE = 'Trackit.sublime-settings'
 
-def send_data(key):
+
+def send_data(key, url):
     try:
-        url = 'http://127.0.0.1:3000/keypress'
         data = json.dumps({"key": key})
         clen = len(data)
         req = urllib2.Request(url, data, {'Content-Type': 'application/json', 'Content-Length': clen})
@@ -19,7 +20,10 @@ def send_data(key):
 class TrackitCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, key, command=None, args=None):
-        send_data(key)
+        settings = sublime.load_settings(SETTINGS_FILE)
+        endpoint = settings.get('endpoint')
+        on_keypress = settings.get('on_keypress')
+        send_data(key, endpoint + on_keypress)
         if command is not None:
             self.view.run_command(command, args)
         else:
