@@ -15,7 +15,7 @@ def send_data(filename, key, timestamp, url):
         data = json.dumps({"timestamp": timestamp, "filepath": filename, "key": key})
         clen = len(data)
         req = urllib2.Request(url, data, {'Content-Type': 'application/json', 'Content-Length': clen})
-        urllib2.urlopen(req, timeout=0.01)
+        urllib2.urlopen(req, timeout=1)
     except Exception as e:
         sublime.status_message("%s while contacting %s" % (e, url))
 
