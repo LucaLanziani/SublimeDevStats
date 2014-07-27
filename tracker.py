@@ -10,6 +10,7 @@ import Queue
 SETTINGS_FILE = 'Trackit.sublime-settings'
 CommunicationQueue = Queue.Queue()
 
+
 def send_data(filename, key, timestamp, url):
     try:
         data = json.dumps({"timestamp": timestamp, "filepath": filename, "key": key})
@@ -32,26 +33,27 @@ class DevStatsSender(threading.Thread):
             msg = CommunicationQueue.get()
 
 
-class TrackitCommand(sublime_plugin.TextCommand):
+class TrackitListener(sublime_plugin.EventListener):
 
-    def run(self, edit, key, command=None, args=None):
+    def on_query_context(self, view, key, operator, operand, match_all):
+        print "key: %r" % [key, operator, operand, match_all]
         settings = sublime.load_settings(SETTINGS_FILE)
         endpoint = settings.get('endpoint')
         on_keypress = settings.get('on_keypress')
-        filename = self.view.file_name()
+        filename = view.file_name()
         msg = {
             'filename': filename,
-            'key': key,
+            'key': operand,
             'timestamp': time.time(),
             'url': endpoint + on_keypress
         }
         CommunicationQueue.put(msg)
-        if command is not None:
-            self.view.run_command(command, args)
-        else:
-            for pos in self.view.sel():
-                if pos.size() > 1:
-                    self.view.erase(edit, pos)
-                self.view.insert(edit, pos.begin(), key)
+        return None
+
+
+class TrackitCommand(sublime_plugin.TextCommand):
+
+    def run(self, edit, key, command=None, args=None):
+        pass
 
 DevStatsSender().start()

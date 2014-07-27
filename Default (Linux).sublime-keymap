@@ -1,79 +1,34 @@
 [
-	{ "keys": ["ctrl+s"], "command": "trackit", "args": { "key": "save", "command": "save" }},
+	{ "keys": ["ctrl+s"],  "command": "echo", "context": [{"key": "keypress", "operand": "save"}]},
 
-	{ "keys": ["backspace"], "command": "trackit", "args": {"key":"backspace", "command": "left_delete" }},
-	{ "keys": ["shift+backspace"], "command": "trackit", "args": {"key":"shift+backspace", "command": "left_delete" }},
-	{ "keys": ["ctrl+shift+backspace"], "command": "trackit", "args": {"key":"ctrl+shift+backspace", "command": "left_delete" }},
+	{ "keys": ["backspace"],  "command": "echo", "context": [{"key": "keypress", "operand": "backspace"}]},
+	{ "keys": ["shift+backspace"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+backspace"}]},
+	{ "keys": ["ctrl+shift+backspace"], "command": "echo", "context": [{"key": "keypress", "operand": "ctrl+shift+backspace"}]},
+	{ "keys": ["delete"], "command": "echo", "context": [{"key": "keypress", "operand": "delete"}]},
+	{ "keys": ["enter"], "command": "echo", "context": [{"key": "keypress", "operand": "enter"}]},
+	{ "keys": ["shift+enter"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+enter"}]},
+	{ "keys": ["keypad_enter"], "command": "echo", "context": [{"key": "keypress", "operand": "keypad_enter"}]},
+	{ "keys": ["shift+keypad_enter"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+keypad_enter"}]},
 
-	{ "keys": ["delete"], "command": "trackit", "args": { "key": "delete", "command": "right_delete" }},
-	{ "keys": ["enter"], "command": "trackit", "args": { "key": "enter", "command": "insert", "args": {"characters": "\n"}}},
+	{ "keys": ["shift+delete"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+delete"}]},
+	{ "keys": ["ctrl+insert"], "command": "echo", "context": [{"key": "keypress", "operand": "ctrl+insert"}]},
+	{ "keys": ["shift+insert"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+insert"}]},
 
-	{ "keys": ["shift+enter"], "command": "trackit", "args": { "key": "shift+enter", "command": "insert", "args": {"characters": "\n"} }},
-	{ "keys": ["keypad_enter"], "command": "trackit", "args": { "key": "keypad_enter", "command": "insert", "args": {"characters": "\n"}}},
-	{ "keys": ["shift+keypad_enter"], "command": "insert", "args": {"characters": "\n"}},
+	{ "keys": ["ctrl+x"], "command": "echo", "context": [{"key": "keypress", "operand": "cut"}]},
+	{ "keys": ["ctrl+c"], "command": "echo", "context": [{"key": "keypress", "operand": "copy"}]},
+	{ "keys": ["ctrl+v"], "command": "echo", "context": [{"key": "keypress", "operand": "paste"}]},
+	{ "keys": ["ctrl+shift+v"], "command": "echo", "context": [{"key": "keypress", "operand": "paste_indent"}]},
+	{ "keys": ["left"], "command": "echo", "context": [{"key": "keypress", "operand": "left"}]},
+	{ "keys": ["right"], "command": "echo", "context": [{"key": "keypress", "operand": "right"}]},
+	{ "keys": ["up"], "command": "echo", "context": [{"key": "keypress", "operand": "up"}]},
+	{ "keys": ["down"], "command": "echo", "context": [{"key": "keypress", "operand": "down"}]},
 
-	{ "keys": ["shift+delete"], "command": "trackit", "args": { "key": "shif+delete", "command": "cut" }},
-	{ "keys": ["ctrl+insert"], "command": "trackit", "args": { "key": "ctrl+insert", "command": "copy" }},
-	{ "keys": ["shift+insert"], "command": "trackit", "args": { "key": "shift+insert", "command": "paste" }},
+	{ "keys": ["pageup"], "command": "echo", "context": [{"key": "keypress", "operand": "pageup"}]},
+	{ "keys": ["pagedown"], "command": "echo", "context": [{"key": "keypress", "operand": "pagedown"}]},
 
-	// These two key bindings should replace the above three if you'd prefer
-	// the traditional X11 behavior of shift+insert pasting from the primary
-	// selection. The above CUA keys are the default, to match most GTK
-	// applications.
-	//{ "keys": ["shift+insert"], "command": "paste", "args": {"clipboard": "selection"}},
-	//{ "keys": ["shift+delete"], "command": "right_delete"},
+	{ "keys": ["home"], "command": "echo", "context": [{"key": "keypress", "operand": "home"}]},
+	{ "keys": ["end"], "command": "echo", "context": [{"key": "keypress", "operand": "end"}]},
 
-	{ "keys": ["ctrl+x"], "command": "trackit", "args": { "key": "ctrl+x", "command": "cut"}},
-	{ "keys": ["ctrl+c"], "command": "trackit", "args": { "key": "ctrl+c", "command": "copy"}},
-	{ "keys": ["ctrl+v"], "command": "trackit", "args": { "key": "ctrl+v", "command": "paste"}},
-	{ "keys": ["ctrl+shift+v"], "command": "trackit", "args": { "key": "ctrl+shift+v", "command": "paste_and_indent"}},
-
-	{ "keys": ["left"], "command": "trackit", "args": { "key": "left", "command": "move", "args": {"by": "characters", "forward": false}}},
-	{ "keys": ["right"], "command": "trackit", "args": { "key": "right", "command": "move", "args": {"by": "characters", "forward": true}}},
-	{ "keys": ["up"], "command": "trackit", "args": { "key": "up", "command": "move", "args": {"by": "lines", "forward": false}}},
-	{ "keys": ["down"], "command": "trackit", "args": { "key": "down", "command": "move", "args": {"by": "lines", "forward": true}}},
-	{ "keys": ["shift+left"], "command": "trackit", "args": { "key": "shift+left", "command": "move", "args": {"by": "characters", "forward": false, "extend": true}}},
-	{ "keys": ["shift+right"], "command": "trackit", "args": { "key": "shift+right", "command": "move", "args": {"by": "characters", "forward": true, "extend": true}}},
-	{ "keys": ["shift+up"], "command": "trackit", "args": { "key": "shift+up", "command": "move", "args": {"by": "lines", "forward": false, "extend": true}}},
-	{ "keys": ["shift+down"], "command": "trackit", "args": { "key": "shift+down", "command": "move", "args": {"by": "lines", "forward": true, "extend": true}}},
-
-	{ "keys": ["ctrl+left"], "command": "trackit", "args": { "key": "ctrl+left", "command": "move", "args": {"by": "words", "forward": false}}},
-	{ "keys": ["ctrl+right"], "command": "trackit", "args": { "key": "ctrl+right", "command": "move", "args": {"by": "word_ends", "forward": true}}},
-	{ "keys": ["ctrl+shift+left"], "command": "trackit", "args": { "key": "ctrl+shift+left", "command": "move", "args": {"by": "words", "forward": false, "extend": true}}},
-	{ "keys": ["ctrl+shift+right"], "command": "trackit", "args": { "key": "ctrl+shift+right", "command": "move", "args": {"by": "word_ends", "forward": true, "extend": true}}},
-
-	{ "keys": ["alt+left"], "command": "trackit", "args": { "key": "alt+left", "command": "move", "args": {"by": "subwords", "forward": false}}},
-	{ "keys": ["alt+right"], "command": "trackit", "args": { "key": "alt+right", "command": "move", "args": {"by": "subword_ends", "forward": true}}},
-	{ "keys": ["alt+shift+left"], "command": "trackit", "args": { "key": "alt+shift+left", "command": "move", "args": {"by": "subwords", "forward": false, "extend": true}}},
-	{ "keys": ["alt+shift+right"], "command": "trackit", "args": { "key": "alt+shift+right", "command": "move", "args": {"by": "subword_ends", "forward": true, "extend": true}}},
-
-	{ "keys": ["alt+shift+up"], "command": "trackit", "args": { "key": "alt+shift+up", "command": "select_lines", "args": {"forward": false}}},
-	{ "keys": ["alt+shift+down"], "command": "trackit", "args": { "key": "alt+shift+down", "command": "select_lines", "args": {"forward": true}}},
-
-	{ "keys": ["pageup"], "command": "trackit", "args": { "key": "pageup", "command": "move", "args": {"by": "pages", "forward": false}}},
-	{ "keys": ["pagedown"], "command": "trackit", "args": { "key": "pagedown", "command": "move", "args": {"by": "pages", "forward": true}}},
-	{ "keys": ["shift+pageup"], "command": "trackit", "args": { "key": "shift+pageup", "command": "move", "args": {"by": "pages", "forward": false, "extend": true}}},
-	{ "keys": ["shift+pagedown"], "command": "trackit", "args": { "key": "shift+pagedown", "command": "move", "args": {"by": "pages", "forward": true, "extend": true}}},
-
-	{ "keys": ["home"], "command": "trackit", "args": { "key": "home", "command": "move_to", "args": {"to": "bol", "extend": false}}},
-	{ "keys": ["end"], "command": "trackit", "args": { "key": "end", "command": "move_to", "args": {"to": "eol", "extend": false}}},
-	{ "keys": ["shift+home"], "command": "trackit", "args": { "key": "shift+home", "command": "move_to", "args": {"to": "bol", "extend": true}}},
-	{ "keys": ["shift+end"], "command": "trackit", "args": { "key": "shift+end", "command": "move_to", "args": {"to": "eol", "extend": true}}},
-	{ "keys": ["ctrl+home"], "command": "trackit", "args": { "key": "ctrl+home", "command": "move_to", "args": {"to": "bof", "extend": false}}},
-	{ "keys": ["ctrl+end"], "command": "trackit", "args": { "key": "ctrl+end", "command": "move_to", "args": {"to": "eof", "extend": false}}},
-	{ "keys": ["ctrl+shift+home"], "command": "trackit", "args": { "key": "ctrl+shift+home", "command": "move_to", "args": {"to": "bof", "extend": true}}},
-	{ "keys": ["ctrl+shift+end"], "command": "trackit", "args": { "key": "ctrl+shift+end", "command": "move_to", "args": {"to": "eof", "extend": true}}},
-
-	{ "keys": ["ctrl+up"], "command": "trackit", "args": { "key": "ctrl+up", "command": "scroll_lines", "args": {"amount": 1.0 }}},
-	{ "keys": ["ctrl+down"], "command": "trackit", "args": { "key": "ctrl+down", "command": "scroll_lines", "args": {"amount": -1.0 }}},
-
-	{ "keys": ["ctrl+pagedown"], "command": "trackit", "args": { "key": "ctrl+pagedown", "command": "next_view"}},
-	{ "keys": ["ctrl+pageup"], "command": "trackit", "args": { "key": "ctrl+pageup", "command": "prev_view"}},
-
-	{ "keys": ["ctrl+tab"], "command": "trackit", "args": { "key": "ctrl+tab", "command": "next_view_in_stack"}},
-	{ "keys": ["ctrl+shift+tab"], "command": "trackit", "args": { "key": "ctrl+shift+tab", "command": "prev_view_in_stack"}},
-
-	{ "keys": ["ctrl+a"], "command": "trackit", "args": { "key": "ctrl+a", "command": "select_all"}},
-	{ "keys": ["ctrl+shift+l"], "command": "trackit", "args": { "key": "ctrl+shift+l", "command": "split_selection_into_lines"}}
+	{ "keys": ["ctrl+a"], "command": "echo", "context": [{"key": "keypress", "operand": "select_all"}]}
 
 ]
