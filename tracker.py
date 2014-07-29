@@ -5,13 +5,14 @@ import json
 import time
 import threading
 import Queue
+import os
 
 
 SETTINGS_FILE = 'Trackit.sublime-settings'
 CommunicationQueue = Queue.Queue()
 
 
-def send_data(filename, key, timestamp, url):
+def send_http(filename, key, timestamp, url):
     try:
         data = json.dumps({"timestamp": timestamp, "filepath": filename, "key": key})
         clen = len(data)
@@ -21,6 +22,12 @@ def send_data(filename, key, timestamp, url):
         sublime.status_message("%s while contacting %s" % (e, url))
 
 
+def write_file(filename, key, timestamp, filepath):
+    _filepath = os.path.abspath(os.path.expanduser(filepath))
+    with open(_filepath, 'a+') as fp:
+        fp.write("%s,%s,%s\n" % (filename, key, timestamp))
+
+
 class DevStatsSender(threading.Thread):
 
     def __init__(self, *args, **kwds):
@@ -28,8 +35,14 @@ class DevStatsSender(threading.Thread):
 
     def run(self):
         msg = CommunicationQueue.get()
+        settings = sublime.load_settings(SETTINGS_FILE)
         while msg is not None:
-            send_data(msg['filename'], msg['key'], msg['timestamp'], msg['url'])
+            if settings.get('sender') == "http":
+                endpoint = settings.get('endpoint')
+                send_http(msg['filename'], msg['key'], msg['timestamp'], endpoint)
+            else:
+                filepath = settings.get('filepath')
+                write_file(msg['filename'], msg['key'], msg['timestamp'], filepath)
             msg = CommunicationQueue.get()
 
 
@@ -37,15 +50,11 @@ class TrackitListener(sublime_plugin.EventListener):
 
     def on_query_context(self, view, key, operator, operand, match_all):
         print "key: %r" % [key, operator, operand, match_all]
-        settings = sublime.load_settings(SETTINGS_FILE)
-        endpoint = settings.get('endpoint')
-        on_keypress = settings.get('on_keypress')
         filename = view.file_name()
         msg = {
             'filename': filename,
             'key': operand,
-            'timestamp': time.time(),
-            'url': endpoint + on_keypress
+            'timestamp': time.time()
         }
         CommunicationQueue.put(msg)
         return None
