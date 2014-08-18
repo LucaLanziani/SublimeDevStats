@@ -1,10 +1,8 @@
-#Trackit: track your develop activity
+# DevStats: gather stats about your develop activity
 
-##Sender
+## Senders
 
-Sender value can be one between 'http' and 'text'
+   * http
+   * file
 
-The http sender will send the data to the endpoint
-The text sender will write the data on the file specified on filepath
-
-__Attention__: the file specified by filepath has to be created by hand
+__Attention__: the plugin will not create the file for you, you have to create it by hand

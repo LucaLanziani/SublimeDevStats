@@ -1,5 +1,0 @@
-{
-    "sender": "text",
-    "endpoint": "http://127.0.0.1:3000/keypress",
-    "filepath": "~/sublimekeypress.txt"
-}

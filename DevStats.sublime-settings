@@ -1,0 +1,11 @@
+{
+    "senders": {
+        "file": {
+            "endpoint": "~/sublimekeypress.txt"
+        },
+        "http": {
+            "endpoint": "http://127.0.0.1:3000/keypress" 
+        }
+    },
+    "sender": "file"
+}

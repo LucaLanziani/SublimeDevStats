@@ -10,19 +10,19 @@
                 "id": "package-settings",
                 "children": [
                     {
-                        "caption": "Trackit",
+                        "caption": "DevStats",
                         "children": [
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/SublimeDevStats/Trackit.sublime-settings"
+                                    "file": "${packages}/SublimeDevStats/DevStats.sublime-settings"
                                 },
                                 "caption": "Settings – Default"
                             },
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/User/Trackit.sublime-settings"
+                                    "file": "${packages}/User/DevStats.sublime-settings"
                                 },
                                 "caption": "Settings – User"
                             },

@@ -1,34 +1,34 @@
 [
-	{ "keys": ["ctrl+s"],  "command": "echo", "context": [{"key": "keypress", "operand": "save"}]},
+	{ "keys": ["ctrl+s"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "save"}]},
 
-	{ "keys": ["backspace"],  "command": "echo", "context": [{"key": "keypress", "operand": "backspace"}]},
-	{ "keys": ["shift+backspace"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+backspace"}]},
-	{ "keys": ["ctrl+shift+backspace"], "command": "echo", "context": [{"key": "keypress", "operand": "ctrl+shift+backspace"}]},
-	{ "keys": ["delete"], "command": "echo", "context": [{"key": "keypress", "operand": "delete"}]},
-	{ "keys": ["enter"], "command": "echo", "context": [{"key": "keypress", "operand": "enter"}]},
-	{ "keys": ["shift+enter"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+enter"}]},
-	{ "keys": ["keypad_enter"], "command": "echo", "context": [{"key": "keypress", "operand": "keypad_enter"}]},
-	{ "keys": ["shift+keypad_enter"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+keypad_enter"}]},
+	{ "keys": ["backspace"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "backspace"}]},
+	{ "keys": ["shift+backspace"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "shift+backspace"}]},
+	{ "keys": ["ctrl+shift+backspace"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "ctrl+shift+backspace"}]},
+	{ "keys": ["delete"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "delete"}]},
+	{ "keys": ["enter"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "enter"}]},
+	{ "keys": ["shift+enter"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "shift+enter"}]},
+	{ "keys": ["keypad_enter"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "keypad_enter"}]},
+	{ "keys": ["shift+keypad_enter"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "shift+keypad_enter"}]},
 
-	{ "keys": ["shift+delete"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+delete"}]},
-	{ "keys": ["ctrl+insert"], "command": "echo", "context": [{"key": "keypress", "operand": "ctrl+insert"}]},
-	{ "keys": ["shift+insert"], "command": "echo", "context": [{"key": "keypress", "operand": "shift+insert"}]},
+	{ "keys": ["shift+delete"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "shift+delete"}]},
+	{ "keys": ["ctrl+insert"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "ctrl+insert"}]},
+	{ "keys": ["shift+insert"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "shift+insert"}]},
 
-	{ "keys": ["ctrl+x"], "command": "echo", "context": [{"key": "keypress", "operand": "cut"}]},
-	{ "keys": ["ctrl+c"], "command": "echo", "context": [{"key": "keypress", "operand": "copy"}]},
-	{ "keys": ["ctrl+v"], "command": "echo", "context": [{"key": "keypress", "operand": "paste"}]},
-	{ "keys": ["ctrl+shift+v"], "command": "echo", "context": [{"key": "keypress", "operand": "paste_indent"}]},
-	{ "keys": ["left"], "command": "echo", "context": [{"key": "keypress", "operand": "left"}]},
-	{ "keys": ["right"], "command": "echo", "context": [{"key": "keypress", "operand": "right"}]},
-	{ "keys": ["up"], "command": "echo", "context": [{"key": "keypress", "operand": "up"}]},
-	{ "keys": ["down"], "command": "echo", "context": [{"key": "keypress", "operand": "down"}]},
+	{ "keys": ["ctrl+x"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "cut"}]},
+	{ "keys": ["ctrl+c"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "copy"}]},
+	{ "keys": ["ctrl+v"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "paste"}]},
+	{ "keys": ["ctrl+shift+v"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "paste_indent"}]},
+	{ "keys": ["left"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "left"}]},
+	{ "keys": ["right"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "right"}]},
+	{ "keys": ["up"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "up"}]},
+	{ "keys": ["down"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "down"}]},
 
-	{ "keys": ["pageup"], "command": "echo", "context": [{"key": "keypress", "operand": "pageup"}]},
-	{ "keys": ["pagedown"], "command": "echo", "context": [{"key": "keypress", "operand": "pagedown"}]},
+	{ "keys": ["pageup"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "pageup"}]},
+	{ "keys": ["pagedown"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "pagedown"}]},
 
-	{ "keys": ["home"], "command": "echo", "context": [{"key": "keypress", "operand": "home"}]},
-	{ "keys": ["end"], "command": "echo", "context": [{"key": "keypress", "operand": "end"}]},
+	{ "keys": ["home"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "home"}]},
+	{ "keys": ["end"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "end"}]},
 
-	{ "keys": ["ctrl+a"], "command": "echo", "context": [{"key": "keypress", "operand": "select_all"}]}
+	{ "keys": ["ctrl+a"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "select_all"}]}
 
 ]
