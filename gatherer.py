@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sublime
 import sublime_plugin
 import urllib2
@@ -6,9 +7,23 @@ import time
 import threading
 import Queue
 import os
-
+import logging
+import sys
 
 SETTINGS_FILE = 'DevStats.sublime-settings'
+def log(*args):
+    settings = sublime.load_settings(SETTINGS_FILE)
+    if settings.get('debug'):
+        print(*args)
+
+NOREQUESTS=True
+try: 
+    import requests
+    NOREQUESTS=FALSE
+except ImportError:
+    log('Cannot import requests, fallback on urllib2')
+    log(sys.path)
+
 CommunicationQueue = Queue.Queue()
 
 
@@ -24,14 +39,25 @@ class Sender(object):
 class HttpSender(Sender):
 
     def send(self, msg):
-        data = json.dumps(msg)
-        clen = len(data)
-        req = urllib2.Request(self.endpoint, data, {'Content-Type': 'application/json', 'Content-Length': clen})
         try:
-            urllib2.urlopen(req, timeout=1)
-        except Exception as e:
-            sublime.status_message("%s while contacting %s" % (e, self.endpoint))
+            data = json.dumps(msg)
+            clen = len(data)
+            headers = {'Content-Type': 'application/json', 'Content-Length': clen}
+            try:
+                if NOREQUESTS:
+                    self.urllib2_post(self.endpoint, data=data, headers=headers)
+                else:
+                    requests.post(self.endpoit, data=data, headers=headers)
 
+            except Exception as e:
+                log("Exception", e, "while contacting", self.endpoint)
+        except Exception as e:
+            log(e)
+
+    def urllib2_post(self, url, data=None, headers=None):
+        req = urllib2.Request(url, data, headers)
+        urllib2.urlopen(req, timeout=1)
+        
 
 class FileSender(Sender):
 
@@ -45,7 +71,7 @@ class FileSender(Sender):
             with open(self._endpoint, 'a+') as fp:
                 fp.write("%s\n" % data)
         except Exception as e:
-            Sublime.status_message("%s while writing %s" % (e, self._endpoint))
+            log("Exception", e, "while writing to", self._endpoint)
 
 class LogSender(Sender):
 
@@ -85,6 +111,7 @@ class StatsSender(threading.Thread):
 class DevTrackListener(sublime_plugin.EventListener):
 
     def on_query_context(self, view, key, operator, operand, match_all):
+        log(view, key, operator, operand, match_all)
         if key.endswith('_keypress'):
             msg = {
                 'filename': view.file_name(),
@@ -95,7 +122,7 @@ class DevTrackListener(sublime_plugin.EventListener):
             keypress_type, _ = key.split('_')
             if keypress_type != 'char':
                 msg['key'] = operand
-
+            log("Sending", msg)
             CommunicationQueue.put(msg)
         return None
 
