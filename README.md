@@ -7,7 +7,7 @@ Built during a hackathon, this plugin is more an experiment than anything else.
 It listens for every keystroke and records them with the timestamp and the filename you are writing in.
 The aim is to use those data to generate some informative graphs about your development activity and give you a useful feedback on how __improve your coding skills__.
 
-Using this information you will also know how much time you spend coding, how fast you type, how many deletions you do, in which project you spend more time, ect etc. And you can also __challenge your friends__ with this data.
+Using these information you will also know how much time you spend coding, how fast you type, how many deletions you do, in which project you spend more time, ect etc. And you can also __challenge your friends__ using these metrics.
 
 It can also be used to monitor how much time you spend coding and it can __give you tips about your health__ (ie. you spent 40mins coding, don't you think it is time for a walk?)
 
