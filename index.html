@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sublimedevstats by Nss</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/Nss/SublimeDevStats">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/Nss/SublimeDevStats/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/Nss/SublimeDevStats/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Sublimedevstats</h1>
+          <p>A sublime plugin to gather all the useful information on the way I write code</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/Nss">Nss</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="devstats" class="anchor" href="#devstats"><span class="octicon octicon-link"></span></a>DevStats</h1>
+
+<h2>
+<a name="gather-stats-about-your-develop-activity" class="anchor" href="#gather-stats-about-your-develop-activity"><span class="octicon octicon-link"></span></a>Gather stats about your develop activity</h2>
+
+<p>Built during a hackathon, this plugin is more an experiment than anything else.</p>
+
+<p>It listens for every keystroke and records them with the timestamp and the filename you are writing in.
+The aim is to use those data to generate some informative graphs about your development activity and give you a useful feedback on how <strong>improve your coding skills</strong>.</p>
+
+<p>Using this information you will also know how much time you spend coding, how fast you type, how many deletions you do, in which project you spend more time, ect etc. And you can also <strong>challenge your friends</strong> with this data.</p>
+
+<p>It can also be used to monitor how much time you spend coding and it can <strong>give you tips about your health</strong> (ie. you spent 40mins coding, don't you think it is time for a walk?)</p>
+
+<h3>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<p>Right now the plugin as its configuration is pretty basic, it just offers you a couple of senders, you need to specify which one you want to use and the endpoint where to send the data.</p>
+
+<h4>
+<a name="senders" class="anchor" href="#senders"><span class="octicon octicon-link"></span></a>Senders</h4>
+
+<ul>
+<li>http (send the data as a JSON via a POST to the endpoint)</li>
+<li>file (append the data to the given file. <strong>The plugin will not create the file for you</strong>)</li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
