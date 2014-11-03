@@ -1,5 +1,7 @@
-from .base_sender import Sender
-
+try:
+	from .base_sender import Sender
+except (ValueError, SystemError):
+	from base_sender import Sender
 
 class LogSender(Sender):
 

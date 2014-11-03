@@ -2,7 +2,11 @@ from __future__ import print_function, absolute_import
 
 import os
 import json
-from .base_sender import Sender
+
+try:
+	from .base_sender import Sender
+except (ValueError, SystemError):
+	from base_sender import Sender
 
 
 class FileSender(Sender):

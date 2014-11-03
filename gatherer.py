@@ -5,10 +5,17 @@ import sublime_plugin
 
 from datetime import datetime
 import threading
-from .senders.file_sender import FileSender
-from .senders.http_sender import HttpSender
-from .senders.log_sender import LogSender
-from .utils import log, SETTINGS_FILE
+
+try:
+    from .senders.file_sender import FileSender
+    from .senders.http_sender import HttpSender
+    from .senders.log_sender import LogSender
+    from .utils import log, SETTINGS_FILE
+except (ValueError, SystemError):
+    from senders.file_sender import FileSender
+    from senders.http_sender import HttpSender
+    from senders.log_sender import LogSender
+    from utils import log, SETTINGS_FILE
 
 try:
     import queue

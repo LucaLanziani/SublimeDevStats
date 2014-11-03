@@ -4,8 +4,12 @@ import sublime
 import threading
 import json
 
-from ..utils import log
-from .base_sender import Sender
+try:
+    from ..utils import log
+    from .senders.base_sender import Sender
+except (ValueError, SystemError):
+    from utils import log
+    from senders.base_sender import Sender
 
 try:
     import urllib.request as urllib2
