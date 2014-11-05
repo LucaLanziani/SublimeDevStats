@@ -1,14 +1,15 @@
-from __future__ import print_function, absolute_import
+from __future__ import absolute_import, print_function
+
+import json
+import threading
 
 import sublime
-import threading
-import json
 
 try:
-    from ..utils import log
-    from .senders.base_sender import Sender
+    from ..utils import log, log_exc
+    from .base_sender import Sender
 except (ValueError, SystemError):
-    from utils import log
+    from utils import log, log_exc
     from senders.base_sender import Sender
 
 try:
@@ -34,12 +35,21 @@ class HttpSender(Sender):
         self._set_send_timeout()
 
     def _set_send_timeout(self):
-        log(threading.current_thread())
         sublime.set_timeout(self._send, 5000)
 
-    def _get_json_data(self):
+    def _format_data(self):
+        data = [
+            dict(
+                filename=data['filename'],
+                key=data['key'],
+                timestamp=data['timestamp'].isoformat()
+            ) for data in self.data
+        ]
+        return json.dumps(data)
+
+    def _get_data(self):
         with self.data_lock:
-            data = json.dumps(self.data)
+            data = self._format_data()
             self.data = []
         return data
 
@@ -51,7 +61,7 @@ class HttpSender(Sender):
 
     def _send(self):
         if self.data:
-            data = self._get_json_data()
+            data = self._get_data()
             headers = {'Content-Type': 'application/json', 'Content-Length': len(data)}
             self.http.post(self.endpoint, data=data, headers=headers)
 
@@ -61,4 +71,7 @@ class HttpSender(Sender):
     def post(self, url, data=None, headers=None):
         encoded = data.encode('utf-8')
         req = urllib2.Request(url, encoded, headers)
-        urllib2.urlopen(req, timeout=1)
+        try:
+            urllib2.urlopen(req, timeout=1)
+        except Exception:
+            log_exc("SublimeDevStat can send data to %s because" % url)

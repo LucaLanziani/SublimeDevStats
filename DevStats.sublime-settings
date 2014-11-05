@@ -1,11 +1,8 @@
 {
-    "senders": {
-        "file": {
-            "endpoint": "~/sublimekeypress.txt"
-        },
-        "http": {
-            "endpoint": "http://127.0.0.1:3000/keypress" 
-        }
-    },
-    "sender": "file"
+
+    "file_endpoint": "~/sublimekeypress.txt",
+    "http_endpoint": "http://127.0.0.1:3000/keypress",
+    "influxdb_endpoint": "http://localhost:8086/db/keypress/series?u=root&p=root",
+    "sender": "file",
+    "debug": false
 }

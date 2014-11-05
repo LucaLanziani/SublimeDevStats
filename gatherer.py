@@ -1,21 +1,23 @@
-from __future__ import print_function, absolute_import
+from __future__ import print_function
+
+import threading
+from datetime import datetime
+
 import sublime
 import sublime_plugin
-
-
-from datetime import datetime
-import threading
 
 try:
     from .senders.file_sender import FileSender
     from .senders.http_sender import HttpSender
     from .senders.log_sender import LogSender
-    from .utils import log, SETTINGS_FILE
+    from .senders.influxdb_sender import InfluxdbSender
+    from .utils import log, log_exc, SETTINGS_FILE
 except (ValueError, SystemError):
     from senders.file_sender import FileSender
     from senders.http_sender import HttpSender
     from senders.log_sender import LogSender
-    from utils import log, SETTINGS_FILE
+    from senders.influxdb_sender import InfluxdbSender
+    from utils import log, log_exc, SETTINGS_FILE
 
 try:
     import queue
@@ -32,6 +34,7 @@ class StatsSender(threading.Thread):
         "http": HttpSender,
         "file": FileSender,
         "log": LogSender,
+        "influxdb": InfluxdbSender,
         None: LogSender
     }
 
@@ -39,17 +42,17 @@ class StatsSender(threading.Thread):
         super(StatsSender, self).__init__(*args, **kwds)
         settings = sublime.load_settings(SETTINGS_FILE)
         sender = settings.get('sender')
+        endpoint = settings.get("%s_endpoint" % sender)
         self.sender_class = self.senders.get(sender)
-        self.queue = queue
         if self.sender_class is not None:
-            self.sender = self.sender_class(settings.get('senders', {}).get(sender, {}).get('endpoint'))
+            self.sender = self.sender_class(endpoint)
+        self.queue = queue
 
     def _get_data(self):
         try:
             data = self.queue.get(True, THREAD_TIMEOUT)
         except queue.Empty:
             data = None
-            active_thread = None
         return data
 
     def run(self):
@@ -59,7 +62,7 @@ class StatsSender(threading.Thread):
                 try:
                     self.sender.send(data)
                 except Exception as e:
-                    log("Exception %r" % e)
+                    log_exc("Exception on send method")
             data = self._get_data()
         log("Terminating", threading.current_thread())
 
@@ -72,8 +75,6 @@ class DevTrackListener(sublime_plugin.EventListener):
         self.active_thread = None
 
     def on_query_context(self, view, key, operator, operand, match_all):
-        global active_thread
-        log(view, key, operator, operand, match_all)
         data = self._format_data(view, key, operand)
         self._send_data(data)
         return None
@@ -98,7 +99,7 @@ class DevTrackListener(sublime_plugin.EventListener):
             data = dict(
                 filename=filename,
                 key=operand if keypress_type != CHAR_KEY_PREFIX else CHAR_KEY_PREFIX,
-                timestamp=datetime.utcnow().isoformat()
+                timestamp=datetime.utcnow()
             )
 
         return data
@@ -108,4 +109,3 @@ class DevTrackCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, key, command=None, args=None):
         pass
-
