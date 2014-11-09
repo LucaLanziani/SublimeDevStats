@@ -1,10 +1,10 @@
-from __future__ import print_function, absolute_import
+from __future__ import print_function
 
 import json
 import os
 
-from senders.base_sender import Sender as BaseSender
-from utils  import log, log_exc
+from SublimeDevStats.senders.base_sender import Sender as BaseSender
+from SublimeDevStats.utils import log_exc
 
 
 class Sender(BaseSender):

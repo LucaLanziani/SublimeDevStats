@@ -1,4 +1,5 @@
-from base_sender import Sender as BaseSender
+from SublimeDevStats.base_sender import Sender as BaseSender
+
 
 class Sender(BaseSender):
 

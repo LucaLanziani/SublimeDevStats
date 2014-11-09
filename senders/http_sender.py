@@ -1,12 +1,11 @@
-from __future__ import absolute_import, print_function
+from __future__ import print_function
 
 import json
 import threading
 
 import sublime
-
-from utils import log, log_exc
-from senders.base_sender import Sender as BaseSender
+from SublimeDevStats.senders.base_sender import Sender as BaseSender
+from SublimeDevStats.utils import log_exc
 
 try:
     import urllib.request as urllib2

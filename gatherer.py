@@ -1,27 +1,25 @@
-from __future__ import print_function, absolute_import
+from __future__ import print_function
 
 import threading
 from datetime import datetime
+from imp import load_source
+from os.path import abspath, dirname, join
+from sys import path
 
 import sublime
 import sublime_plugin
+from SublimeDevStats.utils import log, log_exc, SETTINGS_FILE
 
-from imp import load_source
-from os.path import join
-from sys import path
+PLUGIN_DIR = abspath(join(dirname(__file__), '..'))
 
-try:
-    from .utils import log, log_exc, SETTINGS_FILE, PROJECT_ROOT
-except (ValueError, SystemError):
-    from utils import log, log_exc, SETTINGS_FILE, PROJECT_ROOT
+if PLUGIN_DIR not in path:
+    path.append(PLUGIN_DIR)
+
 
 try:
     import queue
 except ImportError:
     import Queue as queue
-
-if PROJECT_ROOT not in path:
-    path.append(PROJECT_ROOT)
 
 CHAR_KEY_PREFIX = 'char'
 THREAD_TIMEOUT = 30
@@ -34,12 +32,12 @@ class StatsSender(threading.Thread):
         settings = sublime.load_settings(SETTINGS_FILE)
         sender = settings.get('sender')
         endpoint = settings.get("%s_endpoint" % sender)
-        sender_module = load_source('sender', join(PROJECT_ROOT, 'senders',
-                                                 '%s_sender.py' % (sender,)))
+        sender_module = load_source('sender', join(PLUGIN_DIR, 'SublimeDevStats',
+                                    'senders', '%s_sender.py' % (sender,)))
 
         self.sender = sender_module.Sender(endpoint)
         self.queue = queue
- 
+
     def _get_data(self):
         try:
             data = self.queue.get(True, THREAD_TIMEOUT)
@@ -53,7 +51,7 @@ class StatsSender(threading.Thread):
             if self.sender is not None:
                 try:
                     self.sender.send(data)
-                except Exception as e:
+                except Exception:
                     log_exc("Exception on send method")
             data = self._get_data()
         log("Terminating", threading.current_thread())
