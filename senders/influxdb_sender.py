@@ -6,12 +6,8 @@ import threading
 
 import sublime
 
-try:
-    from ..utils import log
-    from .http_sender import HttpSender
-except (ValueError, SystemError):
-    from utils import log
-    from http_sender import HttpSender
+from utils import log
+from senders.http_sender import Sender as HttpSender
 
 try:
     import urllib.request as urllib2
@@ -19,7 +15,7 @@ except ImportError:
     import urllib2
 
 
-class InfluxdbSender(HttpSender):
+class Sender(HttpSender):
 
     def _format_data(self):
         return json.dumps([{

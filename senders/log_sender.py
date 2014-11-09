@@ -1,12 +1,9 @@
-try:
-	from .base_sender import Sender
-except (ValueError, SystemError):
-	from base_sender import Sender
+from base_sender import Sender as BaseSender
 
-class LogSender(Sender):
+class Sender(BaseSender):
 
     def __init__(self, endpoing):
-        super(LogSender, self).__init__(endpoing)
+        super(Sender, self).__init__(endpoing)
 
     def send(self, data):
         print(data)

@@ -1,6 +1,9 @@
-from __future__ import print_function, absolute_import
+from __future__ import print_function, absolute_import, unicode_literals
 
 import sublime
+from os.path import abspath, dirname, join
+
+PROJECT_ROOT = abspath(join(dirname(__file__)))
 
 SETTINGS_FILE = 'DevStats.sublime-settings'
 

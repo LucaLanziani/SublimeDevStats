@@ -1,4 +1,4 @@
-from __future__ import print_function
+from __future__ import print_function, absolute_import
 
 import threading
 from datetime import datetime
@@ -6,48 +6,40 @@ from datetime import datetime
 import sublime
 import sublime_plugin
 
+from imp import load_source
+from os.path import join
+from sys import path
+
 try:
-    from .senders.file_sender import FileSender
-    from .senders.http_sender import HttpSender
-    from .senders.log_sender import LogSender
-    from .senders.influxdb_sender import InfluxdbSender
-    from .utils import log, log_exc, SETTINGS_FILE
+    from .utils import log, log_exc, SETTINGS_FILE, PROJECT_ROOT
 except (ValueError, SystemError):
-    from senders.file_sender import FileSender
-    from senders.http_sender import HttpSender
-    from senders.log_sender import LogSender
-    from senders.influxdb_sender import InfluxdbSender
-    from utils import log, log_exc, SETTINGS_FILE
+    from utils import log, log_exc, SETTINGS_FILE, PROJECT_ROOT
 
 try:
     import queue
 except ImportError:
     import Queue as queue
 
+if PROJECT_ROOT not in path:
+    path.append(PROJECT_ROOT)
 
 CHAR_KEY_PREFIX = 'char'
 THREAD_TIMEOUT = 30
 
-class StatsSender(threading.Thread):
 
-    senders = {
-        "http": HttpSender,
-        "file": FileSender,
-        "log": LogSender,
-        "influxdb": InfluxdbSender,
-        None: LogSender
-    }
+class StatsSender(threading.Thread):
 
     def __init__(self, queue, *args, **kwds):
         super(StatsSender, self).__init__(*args, **kwds)
         settings = sublime.load_settings(SETTINGS_FILE)
         sender = settings.get('sender')
         endpoint = settings.get("%s_endpoint" % sender)
-        self.sender_class = self.senders.get(sender)
-        if self.sender_class is not None:
-            self.sender = self.sender_class(endpoint)
-        self.queue = queue
+        sender_module = load_source('sender', join(PROJECT_ROOT, 'senders',
+                                                 '%s_sender.py' % (sender,)))
 
+        self.sender = sender_module.Sender(endpoint)
+        self.queue = queue
+ 
     def _get_data(self):
         try:
             data = self.queue.get(True, THREAD_TIMEOUT)

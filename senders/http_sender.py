@@ -5,12 +5,8 @@ import threading
 
 import sublime
 
-try:
-    from ..utils import log, log_exc
-    from .base_sender import Sender
-except (ValueError, SystemError):
-    from utils import log, log_exc
-    from senders.base_sender import Sender
+from utils import log, log_exc
+from senders.base_sender import Sender as BaseSender
 
 try:
     import urllib.request as urllib2
@@ -18,10 +14,10 @@ except ImportError:
     import urllib2
 
 
-class HttpSender(Sender):
+class Sender(BaseSender):
 
     def __init__(self, *args):
-        super(HttpSender, self).__init__(*args)
+        super(Sender, self).__init__(*args)
         self.__init_http_sender()
 
     def __init_http_sender(self):

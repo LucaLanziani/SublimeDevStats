@@ -1,20 +1,16 @@
-from __future__ import absolute_import, print_function
+from __future__ import print_function, absolute_import
 
 import json
 import os
 
-try:
-    from .base_sender import Sender
-    from ..utils import log, log_exc
-except (ValueError, SystemError):
-    from senders.base_sender import Sender
-    from utils  import log, log_exc
+from senders.base_sender import Sender as BaseSender
+from utils  import log, log_exc
 
 
-class FileSender(Sender):
+class Sender(BaseSender):
 
     def __init__(self, endpoint):
-        super(FileSender, self).__init__(endpoint)
+        super(Sender, self).__init__(endpoint)
         self._endpoint = os.path.abspath(os.path.expanduser(self.endpoint))
 
     def send(self, data):
