@@ -40,6 +40,7 @@
 	{ "keys": ["alt+shift+right"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "move"}]},
 	{ "keys": ["ctrl+alt+up"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "select_lines"}]},
 	{ "keys": ["ctrl+alt+down"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "select_lines"}]},
+
 	{ "keys": ["pageup"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "move"}]},
 	{ "keys": ["pagedown"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "move"}]},
 	{ "keys": ["shift+pageup"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "move"}]},
@@ -52,4 +53,6 @@
 	{ "keys": ["ctrl+end"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "move_to"}]},
 	{ "keys": ["ctrl+shift+home"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "move_to"}]},
 	{ "keys": ["ctrl+shift+end"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "move_to"}]},
+	{ "keys": ["ctrl+z"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "undo" }]},
+    { "keys": ["ctrl+u"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "soft_undo" }]}
 ]

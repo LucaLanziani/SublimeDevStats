@@ -29,6 +29,8 @@
 	{ "keys": ["home"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "home"}]},
 	{ "keys": ["end"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "end"}]},
 
-	{ "keys": ["ctrl+a"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "select_all"}]}
+	{ "keys": ["ctrl+a"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "select_all"}]},
+	{ "keys": ["ctrl+z"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "undo" }]},
+    { "keys": ["ctrl+u"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "soft_undo" }]}
 
 ]

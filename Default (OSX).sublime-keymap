@@ -16,4 +16,6 @@
 	{ "keys": ["backspace"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "left_delete"}]},
 	{ "keys": ["delete"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "right_delete"}]},
 	{ "keys": ["enter"],  "command": "devtrack", "context": [{"key": "action_keypress", "operand": "insert"}]},
+	{ "keys": ["super+z"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "undo" }]},
+    { "keys": ["super+u"], "command": "devtrack", "context": [{"key": "action_keypress", "operand": "soft_undo" }]}
 ]
