@@ -3,6 +3,8 @@ from __future__ import print_function, unicode_literals
 import sublime
 
 SETTINGS_FILE = 'DevStats.sublime-settings'
+CHAR_KEY_PREFIX = 'char'
+THREAD_TIMEOUT = 30
 
 
 def log(*args):
