@@ -1,41 +1,43 @@
-import re, logging, json, hashlib
-import cPickle as pickle
+import re
+
+from SublimeDevStats.utils import log
 
 
-class Blacklist():
+class Blacklist(object):
 
-    def __init__(self, dirs=[], files=[], contains=[], extentions=[]):
-        super(Blacklist, self).__init__()
+    def __init__(self, re_list=None):
+        regex_list = re_list or []
+        self._setup(regex_list)
 
-        expr = self._unify_escaped(escaped)
-        compiled = re.compile(expr)
-        self._blacklist = set([compiled])
+    def _setup(self, re_list):
+        self._blacklist = self._unify_patterns(re_list)
         self.blacklisted_path = set()  # Cash of blacklisted paths
-        self.allowed_paths=set()  # Cash of allowed path
+        self.allowed_paths = set()  # Cash of allowed path
+        log(re_list, self._blacklist)
 
     def _unify_patterns(self, patterns):
-        patterns = filter(lambda e: e is not None, patterns)
-        if len(patterns) == 0: return None
+        if patterns:
+            expr = '^(%s)$' % '|'.join(patterns)
+            return re.compile(expr)
 
-        expr ='^(%s)$' % '|'.join(patterns)
-        return expr
-
-    def _check_match(self, pattern, pathname):
-        return pattern.match(pathname) is not None
-
-    def is_blacklisted(self, pathname):
-
-        if pathname in self.blacklisted_path:
-            return True
-
-        matches = map(lambda p: self._check_match(p, pathname),self._blacklist)
-
-        if reduce(lambda x, y: x or y, matches, False):
+    def _there_is_a_match(self, pathname):
+        if self._blacklist.match(pathname) is not None:
             self.blacklisted_path.add(pathname)
             return True
-        else:
-            self.allowed_paths.add(pathname)
+
+        self.allowed_paths.add(pathname)
+        return False
+
+    def __contains__(self, pathname):
+
+        if self._blacklist is None:
             return False
+        elif pathname in self.allowed_paths:
+            return False
+        elif pathname in self.blacklisted_path:
+            return True
+
+        return self._there_is_a_match(pathname)
 
 
 if __name__ == '__main__':
