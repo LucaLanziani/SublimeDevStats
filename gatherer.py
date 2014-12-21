@@ -34,6 +34,7 @@ class StatsSender(threading.Thread):
         self.queue = queue
 
     def _reload_sender(self):
+        self.sender = None
         sender = self.settings.get('sender')
         endpoint = self.settings.get("%s_endpoint" % sender)
         try:
